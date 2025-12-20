@@ -4,26 +4,95 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Table</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 60%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        caption {
+            caption-side: top;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            color: #444;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #dfe6e9;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            table {
+                width: 95%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1 align=center>My Table </h1>
-    <table bgcolor="white" width="500px" height="20p0x" align="center" border="4px">
-      <tr> <th>Name</th>
-        <th>City</th>
-        <th>Flat No</th>
-      </tr>
-<tr bgcolor="grey" align="center" border="2px">
-    <td>sejal</td>
-    <td>Pulgaon</td>
-    <td>17</td>
-</tr>
-<tr bgcolor="green" align="center">
-    <td>Kajal</td>
-    <td>Pune</td>
-    <td>502</td>
-</tr>
+
+    <h1>Student Information</h1>
+
+    <table>
+        <caption>Apartment Residents Table</caption>
+
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Flat No</th>
+        </tr>
+
+        <tr>
+            <td>Sejal</td>
+            <td>Pulgaon</td>
+            <td>17</td>
+        </tr>
+
+        <tr>
+            <td>Kajal</td>
+            <td>Pune</td>
+            <td>502</td>
+        </tr>
+
+        <tr>
+            <td>Rohit</td>
+            <td>Nagpur</td>
+            <td>305</td>
+        </tr>
     </table>
+
 </body>
 </html>
