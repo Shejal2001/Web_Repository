@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enhanced Simple Form</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #eef2f3;
+    }
+
+    .form-box {
+        width: 380px;
+        margin: 80px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 9px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .gender, .terms {
+        margin: 10px 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    #msg {
+        text-align: center;
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    .error { color: red; }
+    .success { color: green; }
+
+    .toggle {
+        font-size: 12px;
+        color: #007BFF;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Registration Form</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+<input type="email" id="email" placeholder="Enter Email">
+<input type="text" id="mobile" placeholder="Enter Mobile Number" maxlength="10">
+
+<input type="password" id="password" placeholder="Enter Password">
+<span class="toggle" onclick="togglePassword()">Show / Hide Password</span>
+
+<input type="date" id="dob">
+
+<div class="gender">
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+</div>
+
+<select id="city">
+    <option value="">Select City</option>
+    <option>Pune</option>
+    <option>Mumbai</option>
+    <option>Nagpur</option>
+</select>
+
+<div class="terms">
+    <input type="checkbox" id="terms"> I agree to Terms & Conditions
+</div>
+
+<button onclick="submitForm()">Submit</button>
+
+<p id="msg"></p>
+</div>
+
+<script>
+function togglePassword() {
+    const pwd = document.getElementById("password");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+}
+
+function submitForm() {
+    const name = name.value.trim();
+    const email = email.value.trim();
+    const mobile = mobile.value.trim();
+    const password = password.value;
+    const dob = dob.value;
+    const city = city.value;
+    const terms = document.getElementById("terms").checked;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const msg = document.getElementById("msg");
+
+    if (!name || !email || !mobile || !password || !dob || !city || !gender) {
+        msg.innerHTML = "All fields are required";
+        msg.className = "error";
+        return;
+    }
+
+    if (password.length < 6) {
+        msg.innerHTML = "Password must be at least 6 characters";
+        msg.className = "error";
+        return;
+    }
+
+    if (!/^\d{10}$/.test(mobile)) {
+        msg.innerHTML = "Mobile must be 10 digits";
+        msg.className = "error";
+        return;
+    }
+
+    if (!terms) {
+        msg.innerHTML = "Please accept Terms & Conditions";
+        msg.className = "error";
+        return;
+    }
+
+    // Save to localStorage
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+
+    msg.innerHTML = "Form submitted successfully!";
+    msg.className = "success";
+}
+</script>
+
+</body>
+</html>
